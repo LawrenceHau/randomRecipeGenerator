@@ -18,16 +18,36 @@ function AllDrinkDetails(props) {
             
             
             <div>
-                 <div className='card'>
-                 <div className='card-image'>
-    <img class="DrinkImage"  src={drinks[0].strDrinkThumb}>
-    </img>
-    </div>
+                <div 
+                className='card'>
+
+                <div 
+                className='card-image'>
+
+                    <img 
+                    class="DrinkImage"  
+                    src={drinks[0].strDrinkThumb}>
+                    </img>
+
+                </div>
     <h1>{drinks[0].strDrink}</h1>
-    </div>
-    <div className="ingredients">
-    <h3 className="RandomDrinkInstructions">The required ingredients for this beverage are</h3>
-    <span className="IngredientsHeader">
+
+                </div>
+
+
+
+
+    <div 
+    className="ingredients">
+
+    <h3 
+    className="RandomDrinkInstructions">
+        The required ingredients for this beverage are
+    </h3>
+
+    <span 
+    className="IngredientsHeader">
+
     <p>{drinks[0].strMeasure1}  {drinks[0].strIngredient1}</p>
     <p>{drinks[0].strMeasure2}  {drinks[0].strIngredient2}</p>
     <p>{drinks[0].strMeasure3}  {drinks[0].strIngredient3}</p>
@@ -46,12 +66,21 @@ function AllDrinkDetails(props) {
 
     </span>
     
-    <header className= "IngredientsHeader">
-    <h3>Instructions</h3>
-    <p>{drinks[0].strInstructions}</p>
+    <header 
+    className= "IngredientsHeader">
+
+    <h3>
+        Instructions
+    </h3>
+
+    <p>
+        {drinks[0].strInstructions}
+    </p>
+
     </header>
+
     </div>
-</div>
+            </div>
     )
 }
 

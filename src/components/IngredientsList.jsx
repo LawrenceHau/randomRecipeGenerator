@@ -1,11 +1,10 @@
 import React from 'react';
-import {BrowserRouter as Router} from 'react-router-dom';
 
 
 function DrinkIngredients(props) {
     console.log(props)
     return (
-       <div>
+        <div>
             <header className= "IngredientsHeader">
                 <h3>The required ingredients for this beverage are</h3>
             

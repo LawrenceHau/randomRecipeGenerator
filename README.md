@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# Random Recipe Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# App.js
 
-## Available Scripts
+imports App.Css for styling
 
-In the project directory, you can run:
+imports React to use React
 
-### `npm start`
+uses `{Helmet}` from ReactHelmet to create title
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+imports `{Route, Switch}` from react-router-dom to route to seperate paths, and switch between in different components
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+imports Header, Main, Drinklist, About, AllDrinkDetails to use Route and Switch to switch between each component using navbar, also paths /AllDrink:strDrink to path to seperate drink links when a drink is clicked.
 
-### `npm test`
+imports Background to set the background of the application
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+imports Footer to display navbar footer that links to github.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# GetRandomDrink
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Header
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+creates `div` with the className of title to style the `h1` title text of "Cocktail Generator"
 
-### `npm run eject`
+creates a `nav` that uses `<Link>` to link to Home, AllDrinks, and About
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Get Random Drink to `/GetRandomDrink`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+All Drinks links to `/AllDrinks/`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+About links to `/`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+## Main
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+import `{useState, useEffect} to fetch drinks from CocktailDB
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+import IngredientsList from to pull the information for the ingredients, and display.
 
-### Code Splitting
+import DrinkInstructions to pull the information to creating the random drink
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+creates a `function getRandomDrink()` to fetch a new drink
 
-### Analyzing the Bundle Size
+Uses [Cocktail DB API](https://www.thecocktaildb.com/api/json/v1/1/random.php) to pull a random drink from cocktailDB
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+returns a `div` containing a `div` with the className of card to create styling of a card containing a `div` with the className of card-image to style the card image within the card. The drink title is created within the button with `h1` with a className of card-title to style the title, and a `button` is created below it with the `onClick` function of `{getRandomDrink}`
 
-### Making a Progressive Web App
+the card includes an `img` which contains a `src` that contains the image for the drink that was called.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+creates a `div` with className ingredients that creates styling that calls `<IngredientsList>` and `<DrinkInstructions>` with the props of `{drinks}`
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## IngredientsList
 
-### Deployment
+Creates `<header>` with a className of IngredientsHeader to style the text within `<h3>` to display the text, as well as `p` to relay the info from the GetRandomDrinks api call using `{props.props[0].strMeasure}` and `{props.props[0].strIngredients}`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Drink Instructions
 
-### `npm run build` fails to minify
+creates `h3` and `p` holding the text "Instructions" as well as calling `{{props.props[0].strInstructions}` to display the drink instructions from the GetRandomDrink API call in Main
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## About
+
+`div` given a class name of ingredients to use the same styling from ingredients to create a `p` text that tells you the use of the application
+
+# Components
+
+## All Drinks A-Z
+
+creates a `const [allDrinks, setAllDrinks] = useState([])` to display an array for each drink
+
+Uses `useEffect(()=>)` to call [Cocktail DB API](https://www.thecocktaildb.com/api.php) for each drink
+
+Maps each drink for each letter based on component
+
+uses `<Link>` to /AllDrinks/ for the route in App.js
+
+returns a `div` with the className of card containing two other `div` one with the className of card-image which displays the drink image with `src=DrinkA.strDrinkThumb` and one with a className of card-title containing an `h3` that displays the information of `{drinkA.strDrink}`
+
+---
+
+## AllDrinkDetails
+
+Uses TheCocktailDB's api to call the information for each drink clicked in the `{allDrinks}` route
+
+Uses props.match.params.strDrink to GET the information from the drink that you would like to GET the inforamation from by using useState.
+
+Uses `<div>` with the className card containing `div` with the className card-image to create the styling for the drink card and image as well as an `h1` that calls `{drinks[0].strDrink}`.
+
+Below that is a seperate `div` with the className of ingredients to style the placement of the ingredients, and the instructions.
+
+An `<h3>` is included with the className of RandomDrinkInstructions to style the text of the instructions.
+
+Below it is a `header` with a className of IngredientsHeader to create an opaque box that holds the `h3` Instructions text as well as a multiple `p` which calls the instructions from the API.
+
+---
