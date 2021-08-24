@@ -20,18 +20,14 @@ function AllDrinkDetails(props) {
             <div>
                 <div 
                 className='card'>
-
                 <div 
                 className='card-image'>
-
                     <img 
                     class="DrinkImage"  
                     src={drinks[0].strDrinkThumb}>
                     </img>
-
                 </div>
     <h1>{drinks[0].strDrink}</h1>
-
                 </div>
 
 

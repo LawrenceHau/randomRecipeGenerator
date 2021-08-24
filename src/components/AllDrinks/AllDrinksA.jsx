@@ -6,12 +6,13 @@ import { Link } from 'react-router-dom'
 
 function AllDrinksA(props) {
 
-    const [ allDrinks, setAllDrinks ] = useState([]);   
-    
-    useEffect(() => {
+    const [ allDrinks, setAllDrinks ] = useState([]);   useEffect(() => {
     const url= `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a`
+
+
     fetch(url) 
     .then((res) => res.json())
+
     .then((json) => {
             setAllDrinks(json.drinks)
 
