@@ -1,7 +1,8 @@
 # Random Recipe Generator
 
+<p>
 <img src="./src/z.png" width="800">
-
+</p>
 This is an application that I created using React, and CocktailDB to make API calls. Click Get Random Drinks to generate a random drink, or if you would like to search for a specific drink click All Drinks on the NavBar.
 
 # App.js
